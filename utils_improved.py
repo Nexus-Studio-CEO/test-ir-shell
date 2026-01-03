@@ -3,49 +3,50 @@
 
 """
 Module d'utilitaires pour le projet test-ir-shell.
-Ce module fournit des fonctions pour faciliter les opérations courantes.
+Ce module fournit diverses fonctions pour faciliter le développement et la maintenance du projet.
 """
 
-def additionner(a, b):
+def extraire_entite(nom_fichier):
     """
-    Additionne deux nombres.
+    Extrait l'entité d'un fichier en fonction de son nom.
 
     Args:
-        a (int): Le premier nombre.
-        b (int): Le deuxième nombre.
+        nom_fichier (str): Le nom du fichier.
 
     Returns:
-        int: La somme des deux nombres.
+        str: L'entité extraite du nom du fichier.
     """
-    return a + b
+    return nom_fichier.split('.')[0]
 
-def soustraire(a, b):
+def convertir_temperature(celsius):
     """
-    Soustrait deux nombres.
+    Convertit une température de Celsius en Fahrenheit.
 
     Args:
-        a (int): Le premier nombre.
-        b (int): Le deuxième nombre.
+        celsius (float): La température en Celsius.
 
     Returns:
-        int: La différence entre les deux nombres.
+        float: La température en Fahrenheit.
     """
-    return a - b
+    return (celsius * 9/5) + 32
 
-def multiplier(a, b):
+def formater_chaine(chaine, longueur):
     """
-    Multiplie deux nombres.
+    Formate une chaîne de caractères pour qu'elle soit de la longueur spécifiée.
 
     Args:
-        a (int): Le premier nombre.
-        b (int): Le deuxième nombre.
+        chaine (str): La chaîne à formater.
+        longueur (int): La longueur souhaitée pour la chaîne.
 
     Returns:
-        int: Le produit des deux nombres.
+        str: La chaîne formattée.
     """
-    return a * b
+    if len(chaine) > longueur:
+        return chaine[:longueur]
+    else:
+        return chaine.ljust(longueur)
 
 if __name__ == "__main__":
-    print(additionner(5, 3))  # Exemple d'utilisation de la fonction additionner
-    print(soustraire(10, 4))   # Exemple d'utilisation de la fonction soustraire
-    print(multiplier(7, 2))    # Exemple d'utilisation de la fonction multiplier
+    print(extraire_entite("exemple.txt"))
+    print(convertir_temperature(30))
+    print(formater_chaine("Bonjour, monde!", 10))
