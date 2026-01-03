@@ -4,53 +4,51 @@
 """
 Module principal du projet test-ir-shell.
 
-Ce module fournit les fonctionnalités de base pour le projet test-ir-shell.
-Il contient des fonctions pour la gestion des commandes et des réponses.
+Ce module fournit les fonctionnalités de base pour l'interaction avec le shell IR.
 """
 
-def execute_commande(commande):
+def connecter_shell():
     """
-    Exécute une commande et retourne la sortie.
+    Établir une connexion au shell IR.
+
+    Returns:
+        bool: True si la connexion est établie, False sinon.
+    """
+    # Code de connexion au shell IR
+    print("Connexion au shell IR...")
+    return True
+
+def executer_commande(commande):
+    """
+    Exécuter une commande sur le shell IR.
 
     Args:
         commande (str): La commande à exécuter.
 
     Returns:
-        str: La sortie de la commande.
+        str: Le résultat de l'exécution de la commande.
     """
-    import subprocess
-    return subprocess.check_output(commande, shell=True).decode("utf-8")
+    # Code d'exécution de la commande
+    print(f"Exécution de la commande : {commande}")
+    return f"Résultat de la commande : {commande}"
 
-def parse_reponse(reponse):
+def fermer_connexion():
     """
-    Parse une réponse et retourne les informations extraites.
-
-    Args:
-        reponse (str): La réponse à parser.
+    Fermer la connexion au shell IR.
 
     Returns:
-        dict: Les informations extraites de la réponse.
+        bool: True si la connexion est fermée, False sinon.
     """
-    import json
-    try:
-        return json.loads(reponse)
-    except json.JSONDecodeError:
-        return {}
-
-def affiche_aide():
-    """
-    Affiche l'aide pour le projet test-ir-shell.
-    """
-    print("Aide pour le projet test-ir-shell")
-    print("-------------------------------")
-    print("Commandes disponibles :")
-    print("  - execute_commande : exécute une commande")
-    print("  - parse_reponse : parse une réponse")
+    # Code de fermeture de la connexion
+    print("Fermeture de la connexion au shell IR...")
+    return True
 
 if __name__ == "__main__":
-    affiche_aide()
-    commande = input("Entrez une commande : ")
-    reponse = execute_commande(commande)
-    informations = parse_reponse(reponse)
-    print("Informations extraites :")
-    print(informations)
+    connexion_etablie = connecter_shell()
+    if connexion_etablie:
+        commande = "liste des fichiers"
+        resultat = executer_commande(commande)
+        print(resultat)
+        fermer_connexion()
+    else:
+        print("Erreur de connexion au shell IR.")
