@@ -2,53 +2,39 @@
 # -*- coding: utf-8 -*-
 
 """
-Module de configuration pour le projet test-ir-shell.
-Ce module contient les fonctions de base pour la configuration et l'installation du projet.
+Module pour le projet test-ir-shell.
+Ce module fournit des fonctionnalités pour le projet test-ir-shell.
 """
 
-def configure_project():
-    """
-    Configure le projet en créant les répertoires et les fichiers nécessaires.
-    
-    Returns:
-        None
-    """
-    import os
-    project_dir = os.path.dirname(os.path.abspath(__file__))
-    config_dir = os.path.join(project_dir, 'config')
-    if not os.path.exists(config_dir):
-        os.makedirs(config_dir)
-
-def install_dependencies():
+def installer_dependances():
     """
     Installe les dépendances nécessaires pour le projet.
-    
-    Returns:
-        None
-    """
-    import subprocess
-    subprocess.run(['pip', 'install', '-r', 'requirements.txt'])
 
-def build_project():
-    """
-    Construit le projet en compilant les fichiers source et en créant les exécutables.
-    
-    Returns:
-        None
+    Cette fonction utilise pip pour installer les dépendances spécifiées dans le fichier requirements.txt.
     """
     import subprocess
-    subprocess.run(['python', 'setup.py', 'build'])
+    subprocess.run(["pip", "install", "-r", "requirements.txt"])
+
+def configurer_projet():
+    """
+    Configure le projet avec les paramètres par défaut.
+
+    Cette fonction crée les répertoires et les fichiers nécessaires pour le projet.
+    """
+    import os
+    os.makedirs("data", exist_ok=True)
+    os.makedirs("logs", exist_ok=True)
+
+def lancer_projet():
+    """
+    Lance le projet.
+
+    Cette fonction démarre le projet et commence à traiter les données.
+    """
+    print("Lancement du projet...")
+    # Code pour lancer le projet
 
 if __name__ == "__main__":
-    import argparse
-    parser = argparse.ArgumentParser(description='Configure et installe le projet test-ir-shell.')
-    parser.add_argument('--configure', action='store_true', help='Configure le projet.')
-    parser.add_argument('--install', action='store_true', help='Installe les dépendances.')
-    parser.add_argument('--build', action='store_true', help='Construit le projet.')
-    args = parser.parse_args()
-    if args.configure:
-        configure_project()
-    if args.install:
-        install_dependencies()
-    if args.build:
-        build_project()
+    installer_dependances()
+    configurer_projet()
+    lancer_projet()
