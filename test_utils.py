@@ -1,37 +1,37 @@
 import pytest
 
-def additionner(a, b):
-    return a + b
+def add(x, y):
+    return x + y
 
-def soustraire(a, b):
-    return a - b
+def multiply(x, y):
+    return x * y
 
-def multiplier(a, b):
-    return a * b
+def is_even(x):
+    return x % 2 == 0
 
-def test_additionner_deux_entiers_positifs():
-    assert additionner(5, 7) == 12
+def test_add():
+    assert add(2, 3) == 5
+    assert add(-2, 3) == 1
+    assert add(-2, -3) == -5
 
-def test_soustraire_deux_entiers_positifs():
-    assert soustraire(10, 4) == 6
+def test_multiply():
+    assert multiply(2, 3) == 6
+    assert multiply(-2, 3) == -6
+    assert multiply(-2, -3) == 6
 
-def test_multiplier_deux_entiers_positifs():
-    assert multiplier(3, 9) == 27
+def test_is_even():
+    assert is_even(2) == True
+    assert is_even(3) == False
+    assert is_even(0) == True
 
-def test_additionner_un_entier_et_un_float():
-    assert additionner(5, 7.5) == 12.5
+def test_add_type_error():
+    with pytest.raises(TypeError):
+        add(2, 'a')
 
-def test_soustraire_un_entier_et_un_float():
-    assert soustraire(10, 4.5) == 5.5
+def test_multiply_type_error():
+    with pytest.raises(TypeError):
+        multiply(2, 'a')
 
-def test_multiplier_un_entier_et_un_float():
-    assert multiplier(3, 9.5) == 28.5
-
-def test_additionner_deux_entiers_negatifs():
-    assert additionner(-5, -7) == -12
-
-def test_soustraire_deux_entiers_negatifs():
-    assert soustraire(-10, -4) == -6
-
-def test_multiplier_deux_entiers_negatifs():
-    assert multiplier(-3, -9) == 27
+def test_is_even_type_error():
+    with pytest.raises(TypeError):
+        is_even('a')
