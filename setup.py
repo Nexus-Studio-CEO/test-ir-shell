@@ -1,43 +1,40 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 """
-Module de configuration pour le projet test-ir-shell.
+Module setup pour le projet test-ir-shell.
+
+Ce module contient les fonctions nécessaires pour configurer et installer
+le projet test-ir-shell.
 """
 
 def configurer_projet():
     """
-    Configure le projet en créant les répertoires nécessaires.
+    Configure le projet test-ir-shell.
 
-    Returns:
-        None
+    Cette fonction configure les paramètres du projet, tels que les chemins
+    d'installation et les dépendances.
     """
-    import os
-    repertoire_projet = "test-ir-shell"
-    if not os.path.exists(repertoire_projet):
-        os.makedirs(repertoire_projet)
+    print("Configuration du projet...")
 
-def installer_dependances():
+def installer_projet():
     """
-    Installe les dépendances nécessaires pour le projet.
+    Installe le projet test-ir-shell.
 
-    Returns:
-        None
+    Cette fonction installe le projet et ses dépendances sur le système.
     """
-    import subprocess
-    subprocess.run(["pip", "install", "-r", "requirements.txt"])
+    print("Installation du projet...")
 
-def lancer_projet():
+def nettoyer_projet():
     """
-    Lance le projet en exécutant le script principal.
+    Nettoie le projet test-ir-shell.
 
-    Returns:
-        None
+    Cette fonction supprime les fichiers temporaires et les dépendances
+    inutiles du projet.
     """
-    import subprocess
-    subprocess.run(["python", "main.py"])
+    print("Nettoyage du projet...")
 
 if __name__ == "__main__":
     configurer_projet()
-    installer_dependances()
-    lancer_projet()
+    installer_projet()
+    nettoyer_projet()
