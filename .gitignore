@@ -1,0 +1,32 @@
+# Fichier .gitignore pour test-ir-shell
+
+# Ignorer les fichiers de build et de compilation
+/build/
+/dist/
+/node_modules/
+
+# Ignorer les fichiers de configuration de l'environnement de développement
+.env
+.env.local
+
+# Ignorer les fichiers de cache et de temporisation
+.cache/
+.temp/
+tmp/
+
+# Ignorer les fichiers de logs
+.log
+logs/
+
+# Ignorer les fichiers de dump de bases de données
+dump.sql
+
+# Ignorer les fichiers de IDE et d'éditeurs de code
+.vscode/
+.idea/
+.gitkeep
+
+# Ignorer les fichiers de test et de debugging
+test/
+debug/
+coverage/
