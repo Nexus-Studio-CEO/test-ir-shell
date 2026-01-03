@@ -1,59 +1,53 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+# coding: utf-8
 
 """
 Module utils_improved pour le projet test-ir-shell.
-Ce module fournit des fonctions utiles pour le projet.
+
+Ce module fournit des fonctions utilitaires pour le traitement de données et la gestion de fichiers.
 """
 
-def ajout_element liste, element):
+def lire_fichier(nom_fichier):
     """
-    Ajoute un élément à la fin d'une liste.
+    Lit le contenu d'un fichier.
 
     Args:
-        liste (list): La liste à laquelle ajouter l'élément.
-        element: L'élément à ajouter.
+        nom_fichier (str): Nom du fichier à lire.
 
     Returns:
-        list: La liste mise à jour.
-    """
-    liste.append(element)
-    return liste
-
-def supprimer_element liste, element:
-    """
-    Supprime la première occurrence d'un élément dans une liste.
-
-    Args:
-        liste (list): La liste à partir de laquelle supprimer l'élément.
-        element: L'élément à supprimer.
-
-    Returns:
-        list: La liste mise à jour.
-    """
-    if element in liste:
-        liste.remove(element)
-    return liste
-
-def trouver_index liste, element:
-    """
-    Trouve l'index de la première occurrence d'un élément dans une liste.
-
-    Args:
-        liste (list): La liste à partir de laquelle trouver l'index.
-        element: L'élément à trouver.
-
-    Returns:
-        int: L'index de l'élément si trouvé, -1 sinon.
+        str: Contenu du fichier.
     """
     try:
-        return liste.index(element)
-    except ValueError:
-        return -1
+        with open(nom_fichier, 'r', encoding='utf-8') as fichier:
+            return fichier.read()
+    except FileNotFoundError:
+        return None
+
+def ecrire_fichier(nom_fichier, contenu):
+    """
+    Écrit du contenu dans un fichier.
+
+    Args:
+        nom_fichier (str): Nom du fichier à écrire.
+        contenu (str): Contenu à écrire dans le fichier.
+    """
+    with open(nom_fichier, 'w', encoding='utf-8') as fichier:
+        fichier.write(contenu)
+
+def nettoyer_chaine(chaine):
+    """
+    Nettoie une chaîne de caractères en supprimant les espaces de début et de fin.
+
+    Args:
+        chaine (str): Chaîne à nettoyer.
+
+    Returns:
+        str: Chaîne nettoyée.
+    """
+    return chaine.strip()
 
 if __name__ == "__main__":
-    ma_liste = [1, 2, 3]
-    print(ajout_element(ma_liste, 4))  # [1, 2, 3, 4]
-    print(supprimer_element(ma_liste, 2))  # [1, 3, 4]
-    print(trouver_index(ma_liste, 3))  # 1
-    print(trouver_index(ma_liste, 2))  # -1
+    print("Module utils_improved importé avec succès")
+    print(lire_fichier("exemple.txt"))  # Remplacez "exemple.txt" par un fichier existant
+    ecrire_fichier("exemple_ecrit.txt", "Contenu à écrire")
+    print(nettoyer_chaine("   Chaîne à nettoyer   "))
