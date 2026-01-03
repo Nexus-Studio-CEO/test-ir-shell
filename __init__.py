@@ -3,14 +3,21 @@
 
 """
 Module principal du projet test-ir-shell.
-
-Ce module fournit les fonctionnalités de base pour le projet test-ir-shell.
-Il contient des fonctions pour gérer les données et effectuer des opérations.
+Ce module fournit des fonctionnalités de base pour le projet.
 """
 
-def additionner(a, b):
+def afficher_message(message: str) -> None:
     """
-    Additionne deux nombres.
+    Affiche un message à l'écran.
+
+    Args:
+        message (str): Le message à afficher.
+    """
+    print(message)
+
+def additionner(a: int, b: int) -> int:
+    """
+    Additionne deux nombres entiers.
 
     Args:
         a (int): Le premier nombre.
@@ -21,34 +28,25 @@ def additionner(a, b):
     """
     return a + b
 
-def soustraire(a, b):
+def est_premier(n: int) -> bool:
     """
-    Soustrait deux nombres.
+    Vérifie si un nombre est premier.
 
     Args:
-        a (int): Le premier nombre.
-        b (int): Le deuxième nombre.
+        n (int): Le nombre à vérifier.
 
     Returns:
-        int: La différence des deux nombres.
+        bool: True si le nombre est premier, False sinon.
     """
-    return a - b
-
-def multiplier(a, b):
-    """
-    Multiplie deux nombres.
-
-    Args:
-        a (int): Le premier nombre.
-        b (int): Le deuxième nombre.
-
-    Returns:
-        int: Le produit des deux nombres.
-    """
-    return a * b
+    if n <= 1:
+        return False
+    for i in range(2, int(n ** 0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
 
 if __name__ == "__main__":
-    print("Test du module test-ir-shell")
-    print("Addition : 2 + 3 =", additionner(2, 3))
-    print("Soustraction : 5 - 2 =", soustraire(5, 2))
-    print("Multiplication : 4 * 6 =", multiplier(4, 6))
+    afficher_message("Bonjour, monde!")
+    result = additionner(2, 3)
+    print(f"2 + 3 = {result}")
+    print(f"Est-ce que 5 est premier ? {est_premier(5)}")
